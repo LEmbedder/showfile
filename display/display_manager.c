@@ -3,7 +3,7 @@
 #include <string.h>
 
 static PT_DispOpr g_aptDispOprs[DISP_OPR_NUM];
-
+static int g_iDispOprUsing;
 /* 注册显示设备 */
 int RegisterDispOpr(PT_DispOpr ptDispOpr)
 {
@@ -39,17 +39,41 @@ void ShowDispOpr(void)
     }
 
 }
+/*  选择显示设备 */
 int SelectDispOpr(char *pcName)
+{
+    int i;
+    g_iDispOprUsing = -1;
+    for(i = 0;i < DISP_OPR_NUM; i++)
+    {
+        if(g_aptDispOprs[i] && (strcmp(g_aptDispOprs[i]->name,pcName)== 0))
+        {
+            g_iDispOprUsing = i;
+            return 0;
+        }
+    }
+}
+/* 获取设备 */
+PT_DispOpr GetDispOpr(char *pcName)
 {
     int i;
     for(i = 0;i < DISP_OPR_NUM; i++)
     {
-        
+        if(g_aptDispOprs[i] && (strcmp(g_aptDispOprs[i]->name,pcName)== 0))
+        {
+            return g_aptDispOprs[i];
+        }
     }
+    return NULL;
 }
-int FBInit(void)
+/**
+ * 初始化显示设备
+*/
+int DisplayInit(void)
 {
-    int i_Error;
+    int iError;
+	
+	iError = FBInit();
 
-    return i_Error;
+	return iError;
 }

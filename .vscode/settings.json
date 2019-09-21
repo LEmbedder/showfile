@@ -1,2 +1,11 @@
 {
+    "editor.fontSize": 16,
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.tabSize": 4,
+    "workbench.colorTheme": "One Dark Pro",
+    "C_Cpp.autoAddFileAssociations": true,
+    "C_Cpp.autocomplete": "Default",
+    "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
+    "C_Cpp.clang_format_path": null
 }
